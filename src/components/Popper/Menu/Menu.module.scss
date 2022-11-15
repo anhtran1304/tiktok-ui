@@ -1,10 +1,20 @@
 //Menu wrapper
 .menu-list {
     width: 224px;
+    position: relative;
     .menu-item {
         margin-left: 0;
         padding: 11px 8px 11px 16px;
         line-height: 18px;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        border-width: 10px 10px;
+        border-style: solid;
+        border-color: transparent transparent var(--white-color) transparent;
+        right: 14px;
+        top: -19px;
     }
 }
 
@@ -19,7 +29,33 @@
     justify-content: flex-start;
     border-radius: 0;
     font-weight: 600;
+
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+
     &:hover {
         background: rgba(22, 24, 35, 0.03);
     }
+}
+
+//Header
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.back-btn {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
