@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
     faSpinner,
-    faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
     faEarthAsia,
@@ -15,12 +14,7 @@ import {
     faArrowRightFromBracket,
     faGear,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    faCirclePlay,
-    faMessage,
-    faPaperPlane,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
+import { faCirclePlay, faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 
@@ -31,6 +25,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
+import { InboxIcon, MessageIcon, SearchIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -125,7 +121,8 @@ function Header() {
                 <img src={images.logo} alt="Tiktok" />
                 <HeadlessTippy
                     interactive
-                    visible={searchResult.length > 0}
+                    trigger="click"
+                    // visible={searchResult.length > 0}
                     render={(attrs) => (
                         <div
                             className={cx('search-result')}
@@ -156,7 +153,7 @@ function Header() {
                         />
 
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <SearchIcon />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -171,17 +168,26 @@ function Header() {
                                 Upload
                             </Button>
                             <Tippy
+                                className={cx('messages-btn')}
                                 delay={[0, 100]}
                                 content="Messages"
                                 placement="bottom"
                             >
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
-                            <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button>
+                            <Tippy
+                                offset={[0, 7]}
+                                className={cx('inbox-btn')}
+                                delay={[0, 100]}
+                                content="Inbox"
+                                placement="bottom"
+                            >
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
@@ -200,7 +206,7 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tiktok-obj/1608869201062914.jpeg?x-expires=1668693600&x-signature=ceO0a38OCyIi05ZKHgVrwGxa1cc%3D"
                                 alt="Tran The Anh"

@@ -8,6 +8,7 @@
     box-shadow: rgb(0 0 0 / 12%) 0px 1px 1px;
     display: flex;
     justify-content: center;
+    font-family: 'ProximaNova', sans-serif;
 }
 
 .inner {
@@ -28,6 +29,7 @@
     width: 361px;
 }
 .search {
+    font-family: 'ProximaNova', sans-serif;
     height: var(--search-height);
     border-radius: var(--search-border-radius);
     background: rgba(22, 24, 35, 0.06);
@@ -40,6 +42,7 @@
     border: 1.5px solid transparent;
 
     input {
+        font-family: 'ProximaNova', sans-serif;
         flex: 1;
         height: 100%;
         padding: 12px 0;
@@ -48,7 +51,7 @@
         font-weight: 400;
         font-size: 1.6rem;
         caret-color: var(--primary-color);
-        color: var(--black-color);
+        color: var(--text-color);
     }
 
     input:not(:placeholder-shown) ~ .search-btn {
@@ -93,13 +96,13 @@
 .search-btn {
     width: var(--search-button-width);
     height: 100%;
-    padding: 11px 16px 11px 12px;
-    margin: -12px 1px;
+    padding: 9px 16px 11px 12px;
     font-size: 2rem;
     color: rgba(22, 24, 35, 0.34);
+    text-align: center;
 
     &:hover {
-        background: rgba(22, 24, 35, 0.03);
+        background: rgba(65, 67, 73, 0.03);
         cursor: pointer;
     }
 
