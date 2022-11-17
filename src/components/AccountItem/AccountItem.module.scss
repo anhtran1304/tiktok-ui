@@ -22,7 +22,7 @@
 }
 
 .name {
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     font-weight: 550;
 }
@@ -34,7 +34,7 @@
 }
 
 .username {
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
     font-size: 1.4rem;
     line-height: 18px;
     color: rgba(22, 24, 35, 0.5);

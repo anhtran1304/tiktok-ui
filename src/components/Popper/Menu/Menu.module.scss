@@ -24,7 +24,7 @@
 
 //Menu items
 .menu-item {
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
     width: 100%;
     justify-content: flex-start;
     border-radius: 0;
