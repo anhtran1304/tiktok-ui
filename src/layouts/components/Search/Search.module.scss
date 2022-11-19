@@ -26,6 +26,7 @@
         font-size: 1.6rem;
         caret-color: var(--primary-color);
         color: var(--text-color);
+        padding-right: 45px;
     }
 
     input:not(:placeholder-shown) ~ .search-btn {

@@ -64,14 +64,10 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
+    //Switch log in log out
+    // true: logged in
+    // false: log out
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
     //Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
