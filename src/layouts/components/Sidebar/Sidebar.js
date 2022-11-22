@@ -37,8 +37,8 @@ function Sidebar() {
                     activeIcon={<LiveActiveIcon />}
                 />
             </Menu>
-            <SuggestedAccounts label='Suggested accounts' />
-            <SuggestedAccounts label='Following accounts' />
+            <SuggestedAccounts label="Suggested accounts" />
+            {/* <SuggestedAccounts label='Following accounts' /> */}
         </aside>
     );
 }

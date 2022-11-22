@@ -1,0 +1,80 @@
+.wrapper {
+    width: 320px;
+    position: relative;
+    padding: 20px;
+    background: var(--white-color);
+    border-radius: 8px;
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.button {
+    padding: 6px 8px;
+    min-width: 106px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info {
+    color: var(--text-color);
+}
+
+.username {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.check {
+    font-size: 1.4rem;
+    margin-left: 6px;
+    color: rgb(32, 213, 236);
+}
+
+.name {
+    font-weight: 600;
+    font-style: 14px;
+    line-height: 20px;
+}
+
+.analytics {
+    margin-top: 8px;
+    font-size: 1.7rem;
+}
+
+.follower-count {
+    margin-right: 6px;
+}
+
+.follower {
+    margin-right: 12px;
+    color: #161823bf;
+    font-weight: 500;
+}
+
+.like-count {
+    margin-right: 6px;
+}
+
+.like {
+    color: #161823bf;
+    font-weight: 500;
+}
