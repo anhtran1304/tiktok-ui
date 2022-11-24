@@ -25,6 +25,7 @@ function Sidebar() {
             .getSuggested({ page: 1, perPage: PER_PAGE })
             .then((data) => {
                 setSuggestedUsers((prevUsers) => [...prevUsers, ...data]);
+
             })
             .catch((error) => console.log(error));
     }, []);
