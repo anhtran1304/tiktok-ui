@@ -14,10 +14,11 @@ import config from '~/config';
 import styles from './Sidebar.module.scss';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
 import * as userServices from '~/services/userServices';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function Sidebar({shrink}) {
+function Sidebar({ shrink }) {
     const currentUser = false;
 
     const [suggestedUsers, setSuggestedUsers] = useState([]);
@@ -66,30 +67,48 @@ function Sidebar({shrink}) {
                     </NavLink>
                 </div>
 
+                {!currentUser && (
+                    <div className={cx('login')}>
+                        <div className={cx('detail')}>
+                            <p>Log in to follow creators, like videos, and view comments.</p>
+                            <Button outline>Log in</Button>
+                        </div>
+                    </div>
+                )}
+
                 <div className={cx('suggested')}>
                     <p className={cx('title')}>Suggested accounts</p>
                     {suggestedUsers.map((suggestedUser) => {
-                        return <SuggestedAccounts key={suggestedUser.id} data={suggestedUser} />
+                        return <SuggestedAccounts key={suggestedUser.id} data={suggestedUser} />;
                     })}
 
-                    {seeAll ? <div className={cx('see-all')} onClick={() => setSeeAll(false)}>See less</div> : <div className={cx('see-all')} onClick={() => setSeeAll(true)}>See all</div>}
-
+                    {seeAll ? (
+                        <div className={cx('see-all')} onClick={() => setSeeAll(false)}>
+                            See less
+                        </div>
+                    ) : (
+                        <div className={cx('see-all')} onClick={() => setSeeAll(true)}>
+                            See all
+                        </div>
+                    )}
                 </div>
                 <div className={cx('following')}>
                     <p className={cx('title')}>Following accounts</p>
                     <div className={cx('see-all')}>See more</div>
                 </div>
 
-                {currentUser && <div className={'following'}>
-                    <p className={cx('title')}>Following accounts</p>
-                    {/* Update FollowingAccounts later =>> */}
-                    {/* <FollowingAccounts />
+                {currentUser && (
+                    <div className={'following'}>
+                        <p className={cx('title')}>Following accounts</p>
+                        {/* Update FollowingAccounts later =>> */}
+                        {/* <FollowingAccounts />
                     <FollowingAccounts />
                     <FollowingAccounts />
                     <FollowingAccounts />
                     <FollowingAccounts /> */}
-                    <div className={cx('see-all')}>See more</div>
-                    </div>}
+                        <div className={cx('see-all')}>See more</div>
+                    </div>
+                )}
             </div>
         </div>
     );
