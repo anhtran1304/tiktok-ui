@@ -14,14 +14,11 @@ import config from '~/config';
 import styles from './Sidebar.module.scss';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
 import * as userServices from '~/services/userServices';
-import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
 function Sidebar({shrink}) {
     const currentUser = false;
-
-    const currentYear = new Date().getFullYear();
 
     const [suggestedUsers, setSuggestedUsers] = useState([]);
     const [seeAll, setSeeAll] = useState(false);
@@ -68,15 +65,6 @@ function Sidebar({shrink}) {
                         <LiveActiveIcon className={cx('active-icon')} /> LIVE
                     </NavLink>
                 </div>
-
-                {!currentUser && 
-                    <div className={cx('login')}>
-                        <div className={cx('detail')}>
-                            <p>Log in to follow creators, like videos, and view comments.</p>
-                            <Button outline>Log in</Button>
-                        </div>
-                    </div>
-                }
 
                 <div className={cx('suggested')}>
                     <p className={cx('title')}>Suggested accounts</p>
