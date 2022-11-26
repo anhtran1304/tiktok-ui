@@ -67,7 +67,7 @@ function Header() {
     //Switch log in log out
     // true: logged in
     // false: log out
-    const currentUser = true;
+    const currentUser = false;
     //Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {

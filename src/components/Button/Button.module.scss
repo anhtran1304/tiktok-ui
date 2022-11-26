@@ -30,17 +30,10 @@
     margin-left: 8px;
 }
 
-.title {
-    height: 24px;
-}
-
 .icon {
     display: inline-block;
     width: 20px;
     text-align: center;
-}
-
-.title {
 }
 
 //Button types
@@ -57,6 +50,7 @@
 .primary {
     color: var(--white-color);
     background-color: var(--primary-color);
+    height: 36px;
 
     &:hover {
         background: linear-gradient(
