@@ -1,13 +1,17 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { useContext } from 'react'
 
 import Header from '~/components/Header';
 import Sidebar from '~/components/Sidebar';
+import ModalForm from '~/components/ModalForm'
 import styles from './StretchLayout.module.scss';
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles);
-
 function DefaultLayout({ children }) {
+    const context = useContext(ModalContext)
+
     return (
         <div className={cx('wrapper')}>
             <Header stretch />
@@ -15,6 +19,8 @@ function DefaultLayout({ children }) {
                 <Sidebar shrink />
                 <div className={cx('content')}>{children}</div>
             </div>
+            {context.active && <ModalForm onHide={context.handleHideModal} />}
+
         </div>
     );
 }

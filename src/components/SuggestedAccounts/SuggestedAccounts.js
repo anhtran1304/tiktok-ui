@@ -4,15 +4,21 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { useContext } from 'react'
+
 
 import styles from './SuggestedAccounts.module.scss';
 import Image from '~/components/Image'
 import {Wrapper as Popper} from '~/components/Popper'
 import Button from '../Button'
+import { ModalContext } from '~/components/ModalProvider'
+
 
 const cx = classNames.bind(styles);
 
 function SuggestedAccounts({ sidebar, data, ...passProps }) {
+    const context = useContext(ModalContext)
+
     return (
         <div>
             <HeadlessTippy
@@ -33,7 +39,7 @@ function SuggestedAccounts({ sidebar, data, ...passProps }) {
                                     alt={data?.avatar}
                                 />
 
-                                <Button primary>Follow</Button>
+                                <Button primary onClick={context.handleShowModal}>Follow</Button>
                             </div>
 
                             <div className={cx('tippy-username')}>

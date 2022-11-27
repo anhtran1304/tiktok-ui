@@ -29,7 +29,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const videoRef = useRef();
-    // const context = useContext(ModalContext);
+    const context = useContext(ModalContext);
 
     useEffect(() => {
         if (mute) {
@@ -115,6 +115,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                                                         <Button
                                                             outline
                                                             className={cx('follow-btn')}
+                                                            onClick={context.handleShowModal}
                                                         >
                                                             Follow
                                                         </Button>
@@ -174,7 +175,8 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                         </div>
                     </div>
 
-                    <Button outline style={{ height: '28px' }}>
+                    <Button outline style={{ height: '28px' }}
+                    onClick={context.handleShowModal}>
                         Follow
                     </Button>
                 </div>
@@ -212,13 +214,13 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
                     <div className={cx('actions')}>
                         <div className={cx('action-btn')}>
-                            <Button rounded>
+                            <Button rounded onClick={context.handleShowModal}>
                                 <HeartIcon className={cx('icon-action')} />
                             </Button>
                             <p className={cx('numbers')}>{data?.likes_count}</p>
                         </div>
                         <div className={cx('action-btn')}>
-                            <Button rounded styles={{height: 24}} >
+                            <Button rounded onClick={context.handleShowModal} >
                                 <CommentIcon className={cx('icon-action')} />
                             </Button>
                             <p className={cx('numbers')}>{data?.comments_count}</p>

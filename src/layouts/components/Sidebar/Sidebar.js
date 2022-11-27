@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import {
@@ -15,11 +15,13 @@ import styles from './Sidebar.module.scss';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
 import * as userServices from '~/services/userServices';
 import Button from '~/components/Button';
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles);
 
 function Sidebar({ shrink }) {
     const currentUser = false;
+    const context = useContext(ModalContext)
 
     const [suggestedUsers, setSuggestedUsers] = useState([]);
     const [seeAll, setSeeAll] = useState(false);
@@ -71,7 +73,7 @@ function Sidebar({ shrink }) {
                     <div className={cx('login')}>
                         <div className={cx('detail')}>
                             <p>Log in to follow creators, like videos, and view comments.</p>
-                            <Button outline>Log in</Button>
+                            <Button outline onClick={context.handleShowModal}>Log in</Button>
                         </div>
                     </div>
                 )}

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
@@ -25,6 +25,7 @@ import 'tippy.js/dist/tippy.css';
 import Image from '~/components/Image';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 import Search from '../Search';
+import { ModalContext } from '~/components/ModalProvider';
 
 const cx = classNames.bind(styles);
 
@@ -68,6 +69,7 @@ function Header() {
     // true: logged in
     // false: log out
     const currentUser = false;
+    const context = useContext(ModalContext);
     //Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -118,11 +120,26 @@ function Header() {
 
                 <div className={cx('actions')}>
                     {currentUser ? (
+                        <Button
+                            text
+                            leftIcon={<FontAwesomeIcon icon={faPlus} to={config.routes.upload} />}
+                        >
+                            Upload
+                        </Button>
+                    ) : (
+                        <Button
+                            text
+                            leftIcon={
+                                <FontAwesomeIcon icon={faPlus} onClick={context.handleShowModal} />
+                            }
+                        >
+                            Upload
+                        </Button>
+                    )}
+
+                    {currentUser ? (
                         <>
-                            <Button
-                                text
-                                leftIcon={<FontAwesomeIcon icon={faPlus} />}
-                            >
+                            <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                                 Upload
                             </Button>
                             <Tippy
@@ -149,20 +166,11 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button
-                                text
-                                leftIcon={<FontAwesomeIcon icon={faPlus} />}
-                            >
-                                Upload
-                            </Button>
-                            <Button primary>Log in</Button>
+                            <Button primary onClick={context.handleShowModal}>Log in</Button>
                         </>
                     )}
 
-                    <Menu
-                        items={currentUser ? userMenu : MENU_ITEMS}
-                        onChange={handleMenuChange}
-                    >
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
