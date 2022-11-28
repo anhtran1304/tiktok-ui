@@ -22,10 +22,8 @@ const publicRoutes = [
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.search, component: Search, layout: null },
     { path: config.routes.coin, component: Coin, layout: HeaderOnly },
-    { path: config.routes.setting, component: Setting, },
+    { path: config.routes.setting, component: Setting },
     { path: config.routes.feedback, component: Feedback, layout: HeaderOnly },
-
-
 ];
 
 const privateRoutes = [];

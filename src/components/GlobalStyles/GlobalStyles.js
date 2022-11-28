@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './GlobalStyles.scss';
+import './GlobalStyles.module.scss';
 
 function GlobalStyles({ children }) {
     return React.Children.only(children);
@@ -8,6 +8,6 @@ function GlobalStyles({ children }) {
 
 GlobalStyles.propTypes = {
     children: PropTypes.node.isRequired,
-}
+};
 
 export default GlobalStyles;
