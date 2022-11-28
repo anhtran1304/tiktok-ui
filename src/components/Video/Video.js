@@ -26,7 +26,7 @@ import { ModalContext } from '~/components/ModalProvider';
 const cx = classNames.bind(styles);
 
 function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     const videoRef = useRef();
     const context = useContext(ModalContext);
@@ -69,7 +69,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
         if (
             bounding.top >= 0 &&
             bounding.left >= 0 &&
-            bounding.right <= (window.innerHeight || document.documentElement.clientWidth) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
             bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
         ) {
             playVideo();
@@ -175,8 +175,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                         </div>
                     </div>
 
-                    <Button outline style={{ height: '28px' }}
-                    onClick={context.handleShowModal}>
+                    <Button outline style={{ height: '28px' }} onClick={context.handleShowModal}>
                         Follow
                     </Button>
                 </div>
@@ -199,7 +198,15 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
                         <div className={cx('control-volume', { active: mute })}>
                             <div className={cx('container')}>
-                                <input type="range" min="0" max="100" step="1" orient="vertical" />
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    orient="vertical"
+                                    onChange={adjustVolume}
+                                    value={volume * 100}
+                                />
                             </div>
 
                             <div className={cx('volume-icon')} onClick={toggleMuted}>
@@ -220,7 +227,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                             <p className={cx('numbers')}>{data?.likes_count}</p>
                         </div>
                         <div className={cx('action-btn')}>
-                            <Button rounded onClick={context.handleShowModal} >
+                            <Button rounded onClick={context.handleShowModal}>
                                 <CommentIcon className={cx('icon-action')} />
                             </Button>
                             <p className={cx('numbers')}>{data?.comments_count}</p>
@@ -238,6 +245,12 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
     );
 }
 
-Video.propTypes = {};
+Video.propTypes = {
+    data: PropTypes.object.isRequired,
+    volume: PropTypes.number,
+    mute: PropTypes.bool,
+    adjustVolume: PropTypes.func,
+    toggleMuted: PropTypes.func,
+};
 
 export default Video;

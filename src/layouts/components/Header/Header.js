@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
@@ -113,7 +113,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={config.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>
                 <Search />
@@ -166,7 +166,9 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button primary onClick={context.handleShowModal}>Log in</Button>
+                            <Button primary onClick={context.handleShowModal}>
+                                Log in
+                            </Button>
                         </>
                     )}
 
