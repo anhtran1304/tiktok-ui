@@ -1,1 +1,1 @@
-export {default as Wrapper} from './Popper';
+export {default} from './Popper';

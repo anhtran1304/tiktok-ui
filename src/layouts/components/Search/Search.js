@@ -4,7 +4,7 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 
 import * as searchServices from '~/services/searchServices';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import Popper from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -65,17 +65,13 @@ function Search() {
                 interactive
                 visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
-                    <div
-                        className={cx('search-result')}
-                        tabIndex="-1"
-                        {...attrs}
-                    >
-                        <PopperWrapper>
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <Popper>
                             <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
-                        </PopperWrapper>
+                        </Popper>
                     </div>
                 )}
                 onClickOutside={handleHideResult}
@@ -96,17 +92,9 @@ function Search() {
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
-                    {loading && (
-                        <FontAwesomeIcon
-                            className={cx('loading')}
-                            icon={faSpinner}
-                        />
-                    )}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                    <button
-                        className={cx('search-btn')}
-                        onMouseDown={(e) => e.preventDefault()}
-                    >
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon />
                     </button>
                 </div>

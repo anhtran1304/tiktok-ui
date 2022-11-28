@@ -20,7 +20,7 @@ import {
 } from '~/components/Icons';
 import Button from '~/components/Button';
 import Image from '~/components/Image';
-import { Wrapper as Popper } from '~/components/Popper';
+import Popper from '~/components/Popper';
 import { ModalContext } from '~/components/ModalProvider';
 
 const cx = classNames.bind(styles);
