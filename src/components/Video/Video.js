@@ -26,7 +26,7 @@ import { ModalContext } from '~/components/ModalProvider';
 const cx = classNames.bind(styles);
 
 function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
-    const [isPlaying, setIsPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const videoRef = useRef();
     const context = useContext(ModalContext);
@@ -245,12 +245,6 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
     );
 }
 
-Video.propTypes = {
-    data: PropTypes.object.isRequired,
-    volume: PropTypes.number,
-    mute: PropTypes.bool,
-    adjustVolume: PropTypes.func,
-    toggleMuted: PropTypes.func,
-};
+Video.propTypes = {};
 
 export default Video;

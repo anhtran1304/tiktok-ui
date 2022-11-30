@@ -16,7 +16,7 @@ function Home() {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const result = await videoServices.loadVideo('for-you', page);
+            const result = await videoServices.loadVideo('for-you', page); 
             setVideos((prev) => [...prev, ...result]);
         };
 
@@ -26,7 +26,7 @@ function Home() {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    });
+    }, []);
 
     function handleScroll() {
         if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
@@ -35,7 +35,7 @@ function Home() {
     }
 
     const handleAdjustVolume = (e) => {
-        setVolume(e.target.volume / 100);
+        setVolume(e.target.value / 100);
     };
 
     const toggleMuted = () => {
